@@ -5,10 +5,11 @@ import Cart from './pages/Cart/Cart';
 import Main from './pages/Main/Main';
 import SignUp from './pages/Sign/SignUp';
 import SignIn from './pages/Sign/SignIn';
+import Redirect from './pages/RedirectPage/Redirect';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ProductList from './pages/ProductList/ProductList';
 import Footer from './components/Footer/Footer';
-import Redirect from './pages/RedirectPage/Redirect';
+import Review from './pages/Review/Review';
 
 function Routes() {
   return (
@@ -22,6 +23,7 @@ function Routes() {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/redirect" component={Redirect} />
+        <Route exact path="/review" component={Review} />
       </Switch>
       <Footer />
     </Router>
