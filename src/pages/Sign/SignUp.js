@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import StyledButton from './Button';
+import StyledButton from './StyledButton';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import styled, { ThemeProvider, keyframes, css } from 'styled-components';
@@ -16,7 +16,6 @@ function SignUp() {
   const toggleButton = () => {
     setIsButtonClicked(!isButtonClicked);
   };
-
   return (
     <Background>
       <Overlay />
@@ -32,7 +31,7 @@ function SignUp() {
             </StyledButton>
             <StyledButton backgroundColor="kakao" color="black">
               <a
-                href={`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
+                href={`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
               >
                 1분만에 회원가입 하기
               </a>
