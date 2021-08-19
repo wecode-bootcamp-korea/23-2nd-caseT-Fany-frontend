@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StyledButton from './Button';
+import StyledButton from './StyledButton';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
 import styled, { ThemeProvider, keyframes, css } from 'styled-components';

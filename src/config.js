@@ -1,4 +1,4 @@
-const BASE_URL = 'http://10.58.0.197:8000';
+const BASE_URL = 'http://10.58.0.197:8000/';
 export const API = {
   PRODUCTLIST: `${BASE_URL}/products`,
   CATEGORY: `${BASE_URL}/category`,
@@ -8,7 +8,7 @@ export const API = {
   BANNERS: `${BASE_URL}/banners`,
   SIGNUP: `${BASE_URL}/users/signup`,
   CART: `${BASE_URL}/carts`,
-  KAKAO_LOGIN: `${BASE_URL}/users/kakaocallback`,
+  KAKAO_LOGIN: `${BASE_URL}users/kakaocallback`,
 };
 
 export const REDIRECT_URI = 'http://localhost:3000/redirect';

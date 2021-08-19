@@ -7,7 +7,7 @@ function StyledButton({ children, ...rest }) {
 }
 
 const Button = styled.button`
-  margin-bottom: ${props => props.marginBottom || '15px'};
+  margin-bottom: ${({ marginBottom }) => marginBottom || '15px'};
   width: 100%;
   height: 44px;
   font-size: 18px;
@@ -28,4 +28,4 @@ const Button = styled.button`
   }}
 `;
 
-export default Button;
+export default StyledButton;
