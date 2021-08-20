@@ -32,7 +32,7 @@ function SignUp() {
             </StyledButton>
             <StyledButton backgroundColor="kakao" color="black">
               <a
-                href={`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
+                href={`https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`}
               >
                 1분만에 회원가입 하기
               </a>

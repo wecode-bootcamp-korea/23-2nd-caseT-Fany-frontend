@@ -1,0 +1,52 @@
+{
+  "TextColorBox": [
+    {
+      "fontColor": "#FF0000"
+    },
+    {
+      "fontColor": "#FF1493"
+    },
+    {
+      "fontColor": "#FFBC61"
+    },
+    {
+      "fontColor": "#FFDAB9"
+    },
+    {
+      "fontColor": "#F0E68C"
+    },
+    {
+      "fontColor": "#F5DEB3"
+    },
+    {
+      "fontColor": "#98FB98"
+    },
+    {
+      "fontColor": "#00FF00"
+    },
+    {
+      "fontColor": "#00CED1"
+    },
+    {
+      "fontColor": "#1E90FF"
+    },
+    {
+      "fontColor": "#4169E1"
+    },
+    {
+      "fontColor": "#9370DB"
+    },
+    {
+      "fontColor": "#F4A460"
+    },
+    {
+      "fontColor": "#D2691E"
+    },
+    {
+      "fontColor": "#D3D3D3"
+    },
+    {
+      "fontColor": "#708090"
+    }
+  ]
+}

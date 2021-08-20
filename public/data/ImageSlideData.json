@@ -1,0 +1,28 @@
+{
+  "slideImage": [
+    {
+      "name": "@auto__sang",
+      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom0.jpeg"
+    },
+    {
+      "name": "@taeHwan_Park ",
+      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom2.png"
+    },
+    {
+      "name": "@moong.t__k",
+      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom2.png"
+    },
+    {
+      "name": "@9.9_s_h__",
+      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom3.png"
+    },
+    {
+      "name": "@201_steve",
+      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom4.png"
+    },
+    {
+      "name": "@zzang_zung",
+      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom5.png"
+    }
+  ]
+}
