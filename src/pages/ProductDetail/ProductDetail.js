@@ -4,7 +4,6 @@ import ImageContainer from './ImageContainer';
 import DetailContainer from './DetailContainer';
 import FeatureContainer from './FeatureContainer';
 import { API } from '../../config';
-
 import axios from 'axios';
 
 function ProductDetail() {
@@ -74,23 +73,9 @@ function ProductDetail() {
 
   useEffect(() => {
     axios
-      .get('/data/ImageSlideData.json')
-      .then(res => {
-        setMainImage({ ...mainImage, ...res.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    axios
       .get('/data/data.json')
-      // .get(`${API.PRODUCTLIST}/${this.props.match.params.id}`)
-      // .get(`${API.PRODUCTLIST}/35`)
-
       .then(res => {
-        setProductData({ ...productData, ...res.data.MESSAGE });
+        setProductData({ ...productData, ...res.data.result });
       })
       .catch(error => {
         console.log(error);
@@ -107,8 +92,6 @@ function ProductDetail() {
             changeImage={changeImage}
             cartState={cartState}
             setCartState={setCartState}
-            mainImage={mainImage}
-            setMainImage={setMainImage}
           />
           <DetailContainer
             productData={productData}

@@ -20,7 +20,6 @@ const Cart = styled.div`
     margin-top: 10px;
   }
 `;
-
 const CartBtn = styled.button`
   margin-top: 5px;
   padding-top: 20px;

@@ -1,0 +1,37 @@
+{
+  "results": [
+    {
+      "cart_id": 10,
+      "custom_product_id": 4,
+      "name": "그린 반팔 티셔츠",
+      "price": 30000,
+      "size": "M",
+      "color": "Lime ",
+      "main_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-2.jpg",
+      "quantity": 1,
+      "total_price": 30000
+    },
+    {
+      "cart_id": 10,
+      "custom_product_id": 4,
+      "name": "그린 반팔 티셔츠",
+      "price": 30000,
+      "size": "M",
+      "color": "Lime ",
+      "main_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-2.jpg",
+      "quantity": 1,
+      "total_price": 30000
+    },
+    {
+      "cart_id": 10,
+      "custom_product_id": 4,
+      "name": "그린 반팔 티셔츠",
+      "price": 30000,
+      "size": "M",
+      "color": "Lime ",
+      "main_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-2.jpg",
+      "quantity": 1,
+      "total_price": 30000
+    }
+  ]
+}

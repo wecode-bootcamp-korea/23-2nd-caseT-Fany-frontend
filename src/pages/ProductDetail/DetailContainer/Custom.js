@@ -182,6 +182,7 @@ const CustomText = styled.div`
   padding-top: 20px;
   width: 325px;
   border-top: 1px solid #dee2e6;
+
   p {
     position: absolute;
     margin-top: -29px;
@@ -190,7 +191,6 @@ const CustomText = styled.div`
     color: grey;
   }
 `;
-
 const TextInput = styled.input`
   margin: 5px 0;
   padding-left: 10px;
@@ -200,7 +200,6 @@ const TextInput = styled.input`
   border: 1px solid #dee2e6;
   border-radius: 2px;
 `;
-
 const TextColor = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -211,7 +210,6 @@ const TextColor = styled.div`
     padding-bottom: 5px;
   }
 `;
-
 const TextColorBox = styled.div`
   margin: 3px;
   width: 34px;

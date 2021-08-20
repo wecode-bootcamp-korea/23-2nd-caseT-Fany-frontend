@@ -7,7 +7,7 @@ export const API = {
   SIGNIN: `${BASE_URL}/users/signin`,
   BANNERS: `${BASE_URL}/banners`,
   SIGNUP: `${BASE_URL}/users/signup`,
-  CART: `${BASE_URL}/carts`,
+  CART: `${BASE_URL}/product_id`,
   KAKAO_LOGIN: `${BASE_URL}/users/kakaocallback`,
 };
 
