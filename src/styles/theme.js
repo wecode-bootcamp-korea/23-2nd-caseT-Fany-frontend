@@ -1,3 +1,5 @@
+import { findByLabelText } from '@testing-library/dom';
+
 const theme = {
   background: '#FFFEFC',
   white: '#FFFFFF',
@@ -17,6 +19,11 @@ const theme = {
     instagram: '#2a4375',
     kakao: '#fce401',
     gray: '#666666',
+  },
+  CenterAlignment: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 };
 

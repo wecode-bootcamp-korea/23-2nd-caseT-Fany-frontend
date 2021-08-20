@@ -85,9 +85,9 @@ const FlexColumn = css`
 `;
 
 const FooterContainer = styled.div`
+  width: 100%;
   position: absolute;
-  left: 0;
-  bottom: 0;
+  bottom: 100;
   align-items: center;
   width: 100%;
   color: white;

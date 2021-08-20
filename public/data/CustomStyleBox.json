@@ -1,0 +1,28 @@
+{
+  "CustomStyleBox": [
+    {
+      "font": "Permanent Marker",
+      "url": "/images/font1.jpg"
+    },
+    {
+      "font": "Gloria Hallelujah",
+      "url": "/images/font2.jpg"
+    },
+    {
+      "font": "Bungee",
+      "url": "/images/font3.jpg"
+    },
+    {
+      "font": "Hanalei",
+      "url": "/images/font4.jpg"
+    },
+    {
+      "font": "Rampart One",
+      "url": "/images/font5.jpg"
+    },
+    {
+      "font": "Monoton",
+      "url": "/images/font6.jpg"
+    }
+  ]
+}
