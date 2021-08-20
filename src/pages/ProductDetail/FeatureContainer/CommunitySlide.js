@@ -13,7 +13,6 @@ const CommunitySlide = () => {
     slidesToScroll: 1,
     speed: 500,
   };
-
   const [slide, setSlide] = useState({});
 
   useEffect(() => {
@@ -48,8 +47,9 @@ const CommunitySlide = () => {
 };
 
 const CommunitySlideContainer = styled.div`
-  ${({ theme }) => theme.CenterAlignment};
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin-top: 150px;
 `;
 

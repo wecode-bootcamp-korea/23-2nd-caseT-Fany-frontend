@@ -183,7 +183,6 @@ const ProductColorBox = styled.div`
   width: 31.3%;
   height: 150px;
   background: no-repeat center/100% url(${({ picture }) => picture});
-
   border-radius: 4px;
   border: 1px solid black;
   cursor: pointer;

@@ -1,12 +1,12 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const CartOrder = () => {
+const CartOrder = ({ totalPrice }) => {
   return (
     <CartOrderContainer>
       <OrderText>
         <p>소계</p>
-        <p>360000</p>
+        <p>₩ {totalPrice}</p>
       </OrderText>
       <OrderText>
         <p>배송비</p>
@@ -15,7 +15,7 @@ const CartOrder = () => {
       <OrderLine />
       <OrderText>
         <p>Total</p>
-        <p>360000</p>
+        <p>₩ {totalPrice}</p>
       </OrderText>
     </CartOrderContainer>
   );
@@ -34,6 +34,7 @@ const OrderText = styled.div`
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.2px;
+
   p {
     height: 15px;
   }

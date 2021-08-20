@@ -89,6 +89,7 @@ const FooterContainer = styled.div`
   width: 100%;
   color: white;
   background-color: #333333;
+  z-index: 5000;
   ${FlexColumn};
 `;
 

@@ -1,52 +1,68 @@
 {
   "TextColorBox": [
     {
-      "fontColor": "#FF0000"
+      "fontColor": "#FF0000",
+      "fontId": 1
     },
     {
-      "fontColor": "#FF1493"
+      "fontColor": "#FF1493",
+      "fontId": 2
     },
     {
-      "fontColor": "#FFBC61"
+      "fontColor": "#FFBC61",
+      "fontId": 3
     },
     {
-      "fontColor": "#FFDAB9"
+      "fontColor": "#FFDAB9",
+      "fontId": 4
     },
     {
-      "fontColor": "#F0E68C"
+      "fontColor": "#F0E68C",
+      "fontId": 5
     },
     {
-      "fontColor": "#F5DEB3"
+      "fontColor": "#F5DEB3",
+      "fontId": 6
     },
     {
-      "fontColor": "#98FB98"
+      "fontColor": "#98FB98",
+      "fontId": 7
     },
     {
-      "fontColor": "#00FF00"
+      "fontColor": "#00FF00",
+      "fontId": 8
     },
     {
-      "fontColor": "#00CED1"
+      "fontColor": "#00CED1",
+      "fontId": 9
     },
     {
-      "fontColor": "#1E90FF"
+      "fontColor": "#1E90FF",
+      "fontId": 10
     },
     {
-      "fontColor": "#4169E1"
+      "fontColor": "#4169E1",
+      "fontId": 11
     },
     {
-      "fontColor": "#9370DB"
+      "fontColor": "#9370DB",
+      "fontId": 12
     },
     {
-      "fontColor": "#F4A460"
+      "fontColor": "#F4A460",
+      "fontId": 13
     },
     {
-      "fontColor": "#D2691E"
+      "fontColor": "#D2691E",
+      "fontId": 14
     },
     {
-      "fontColor": "#D3D3D3"
+      "fontColor": "#D3D3D3",
+      "fontId": 15
     },
     {
-      "fontColor": "#708090"
+      "fontColor": "#708090",
+      "fontId": 16
     }
   ]
 }

@@ -20,7 +20,7 @@ const theme = {
     kakao: '#fce401',
     gray: '#666666',
   },
-  CenterAlignment: {
+  centerAlignment: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
