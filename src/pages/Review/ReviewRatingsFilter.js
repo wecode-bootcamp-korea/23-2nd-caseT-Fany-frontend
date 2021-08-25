@@ -23,10 +23,8 @@ function ReviewRatings() {
 }
 
 const display = css`
-  display: flex;
+  ${({ theme }) => theme.CenterAlignment};
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 const RatingAlignWrapper = styled.div`

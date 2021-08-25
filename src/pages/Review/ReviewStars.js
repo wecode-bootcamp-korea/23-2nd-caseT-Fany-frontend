@@ -1,23 +1,18 @@
-import React from 'react';
-import Rating from '@material-ui/lab/Rating';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import React, { useState } from 'react';
+import { Rating } from 'react-simple-star-rating';
 
-export default function ReviewStars() {
-  const [value, setValue] = React.useState(0);
+export default function MyComponent() {
+  const [rating, setRating] = useState(0); // initial rating value
+
+  // Catch Rating value
+  const handleRating = rate => {
+    setRating(rate);
+    // Some logic
+  };
 
   return (
-    <div>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Rating</Typography>
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-      </Box>
+    <div className="App">
+      <Rating onClick={handleRating} ratingValue={rating} /* Rating Props */ />
     </div>
   );
 }

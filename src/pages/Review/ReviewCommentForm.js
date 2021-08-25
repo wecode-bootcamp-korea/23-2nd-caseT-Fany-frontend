@@ -7,20 +7,11 @@ export default function ReviewCommentForm() {
 
   return (
     <section className={classes.root}>
-      <textarea placeholder="리뷰 남기기" className={classes.commentBox} />
-      <Button
-        className={classes.button}
-        onClick={() => {
-          alert('clicked');
-        }}
-      >
-        리뷰 등록
-      </Button>
-      <label htmlFor="containedButtonFile">
+      {/* <label htmlFor="containedButtonFile">
         <Button variant="contained" color="primary" component="span">
           Upload
         </Button>
-      </label>
+      </label> */}
       <input
         accept="image/*"
         className={classes.input}
@@ -28,6 +19,20 @@ export default function ReviewCommentForm() {
         multiple
         type="file"
       />
+      <textarea
+        placeholder="리뷰 남기기"
+        type="text"
+        maxlength="100"
+        className={classes.commentBox}
+      />
+      <Button
+        className={classes.reviewBtn}
+        onClick={() => {
+          alert('clicked');
+        }}
+      >
+        리뷰 등록
+      </Button>
     </section>
   );
 }
@@ -37,21 +42,26 @@ const useStyles = makeStyles(theme => ({
     '& > *': {
       margin: theme.spacing(1),
     },
+    padding: '30px',
+
     display: 'flex',
-    flexDirection: 'column',
-    width: '500px',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+    width: '100%',
+  },
+  input: {
+    width: '180px',
   },
   commentBox: {
-    height: '100px',
+    width: '100%',
+    height: '150px',
     padding: '20px',
     border: '1px solid black',
     borderRadius: '5px',
+    overflow: 'scroll',
   },
-  button: {
+  reviewBtn: {
+    width: '100%',
     border: '1px solid',
-  },
-  btnContainer: {
-    margin: '10px',
-    padding: '10px',
   },
 }));

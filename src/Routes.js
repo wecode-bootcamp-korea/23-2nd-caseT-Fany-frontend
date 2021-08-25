@@ -14,7 +14,7 @@ import Review from './pages/Review/Review';
 function Routes() {
   return (
     <Router>
-      <Nav />
+      {/* <Nav /> */}
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/cart" component={Cart} />
@@ -25,7 +25,7 @@ function Routes() {
         <Route exact path="/redirect" component={Redirect} />
         <Route exact path="/review" component={Review} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

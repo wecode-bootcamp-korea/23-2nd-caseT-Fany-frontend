@@ -6,6 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import ReviewStars from './ReviewStars';
 
 export default function ReviewCommentList() {
   const classes = useStyles();
@@ -37,6 +38,7 @@ export default function ReviewCommentList() {
                   >
                     {'구매한 상품'}
                   </Typography>
+                  <ReviewStars />
                   <div>{list}</div>
                 </>
               }
@@ -51,7 +53,6 @@ export default function ReviewCommentList() {
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    maxWidth: '500px',
     backgroundColor: theme.palette.background.paper,
   },
   reviewListContainer: {

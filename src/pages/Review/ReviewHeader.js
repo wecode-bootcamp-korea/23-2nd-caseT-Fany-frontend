@@ -6,49 +6,40 @@ function ReviewHeader() {
     <ReviewWrapper>
       <Title>고객리뷰</Title>
       <RatingWrapper>
-        <RatingAverageNum>{'별점 숫자 평균'}</RatingAverageNum>
-        <RatingStar>{'별점 visible 평균(star)'}</RatingStar>
-        <p>기준 {'리뷰개수'} 리뷰</p>
+        {/* <RatingStar>{'⭐️⭐️⭐️⭐️⭐️'}</RatingStar> */}
       </RatingWrapper>
     </ReviewWrapper>
   );
 }
 
-const display = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
 const ReviewWrapper = styled.section`
-  ${display}
+  ${({ theme }) => theme.CenterAlignment};
+  flex-wrap: wrap;
   width: 100%;
-  margin: 0 auto;
+  margin: 100px auto;
   margin-bottom: 30px;
 `;
 
 const Title = styled.h1`
+  ${({ theme }) => theme.CenterAlignment};
+  flex-wrap: wrap;
+  width: 100%;
   margin-bottom: 30px;
-  font-size: 30px;
-  text-align: center;
-`;
-
-const RatingAverageNum = styled.h2`
   font-size: 50px;
-  font: bold;
-  text-align: center;
-`;
-
-const RatingStar = styled.div`
   text-align: center;
 `;
 
 const RatingWrapper = styled.div`
-  ${display}
-  p {
-    font-size: 10px;
-    text-align: center;
-  }
+  ${({ theme }) => theme.CenterAlignment};
+  flex-wrap: wrap;
+  width: 100%;
+`;
+
+const RatingStar = styled.div`
+  ${({ theme }) => theme.CenterAlignment};
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
 `;
 
 export default ReviewHeader;

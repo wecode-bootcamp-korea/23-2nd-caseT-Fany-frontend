@@ -18,6 +18,11 @@ const theme = {
     kakao: '#fce401',
     gray: '#666666',
   },
+  CenterAlignment: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 };
 
 export default theme;

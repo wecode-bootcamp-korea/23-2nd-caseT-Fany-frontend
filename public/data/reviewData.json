@@ -1,0 +1,20 @@
+{
+  "results": [
+    {
+      "user": 8,
+      "product_id": 2,
+      "product_name": "반팔티",
+      "text": "티셔츠 예뻐요!",
+      "score": 5,
+      "image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-8.jpg"
+    },
+    {
+      "user": 2,
+      "product_id": 5,
+      "product_name": "반팔",
+      "text": "티셔츠 편해요",
+      "score": 4,
+      "image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-8.jpg"
+    }
+  ]
+}
