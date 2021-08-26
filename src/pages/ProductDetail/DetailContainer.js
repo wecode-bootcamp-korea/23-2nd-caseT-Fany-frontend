@@ -13,25 +13,24 @@ const DetailContainer = ({
   setFontSize,
   text,
   setText,
+  changeMainImage,
 }) => {
   const [more, setMore] = useState('hidden');
   const [moreBtn, setMoreBtn] = useState('block');
+
+  console.log(productData);
 
   return (
     <DetailBox>
       <div>
         <DetailTitle>{productData.name}</DetailTitle>
-        <DetailPrice>{productData.price}</DetailPrice>
+        <DetailPrice>₩ {productData.price}</DetailPrice>
         <DetailRate>
-          {productData.avg_score === 5 && (
-            <div>
-              <Star>🌟</Star>
-              <Star>🌟</Star>
-              <Star>🌟</Star>
-              <Star>🌟</Star>
-              <Star>🌟</Star>
-            </div>
-          )}
+          <Star>🌟</Star>
+          <Star>🌟</Star>
+          <Star>🌟</Star>
+          <Star>🌟</Star>
+          <Star>🌟</Star>
         </DetailRate>
       </div>
       <OptionChoice>
@@ -50,7 +49,7 @@ const DetailContainer = ({
                       productData.cloth_color_image &&
                       productData.cloth_color_image[i]
                     }
-                    onClick={() => {}}
+                    onClick={e => changeMainImage(i)}
                   />
                 );
               })}
@@ -65,7 +64,7 @@ const DetailContainer = ({
                       productData.cloth_color_image &&
                       productData.cloth_color_image[i]
                     }
-                    onClick={() => {}}
+                    onClick={e => changeMainImage(i)}
                   />
                 );
               })}
@@ -98,7 +97,6 @@ const DetailContainer = ({
           />
         )}
       <CartContainer />
-      {console.log(productData.main_image)}
     </DetailBox>
   );
 };

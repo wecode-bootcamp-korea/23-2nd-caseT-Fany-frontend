@@ -6,17 +6,20 @@ const ImageContainer = ({ canvas, productData, changeImage, mainImage }) => {
   return (
     <ImageBox>
       <Image picture={productData.main_image} ref={canvas}></Image>
-      <ImageSlide
-        changeImage={changeImage}
-        productData={productData}
-        mainImage={mainImage}
-      />
+      {console.log(productData.name)}
+      {productData.name === '커스텀 티셔츠' && (
+        <ImageSlide
+          changeImage={changeImage}
+          productData={productData}
+          mainImage={mainImage}
+        />
+      )}
     </ImageBox>
   );
 };
 
 const ImageBox = styled.div`
-  ${({ theme }) => theme.CenterAlignment};
+  ${({ theme }) => theme.centerAlignment};
   flex-wrap: wrap;
   position: -webkit-sticky;
   position: sticky;

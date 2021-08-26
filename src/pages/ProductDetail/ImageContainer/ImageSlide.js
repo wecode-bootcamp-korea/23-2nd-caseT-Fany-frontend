@@ -42,8 +42,8 @@ const SlideBox = styled.div`
 `;
 
 const Image = styled.div`
-  height: 124px;
-  background: center/100% url(${props => props.picture});
+  height: 114px;
+  background: center/100% url(${picture => picture});
   &: hover {
     border-bottom: 3px solid rgba(142, 182, 149, 0.5);
     border-opacity: 0.75;

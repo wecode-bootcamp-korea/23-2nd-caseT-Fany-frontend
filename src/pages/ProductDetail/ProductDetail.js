@@ -6,7 +6,7 @@ import FeatureContainer from './FeatureContainer';
 import { API } from '../../config';
 import axios from 'axios';
 
-function ProductDetail() {
+function ProductDetail(props) {
   const canvas = useRef();
   const [text, setText] = useState('');
   const [coordinate, setCoordinate] = useState('right');
@@ -24,6 +24,15 @@ function ProductDetail() {
     setProductData(newData);
     setText('');
   };
+
+  const changeMainImage = e => {
+    let newData = { ...productData };
+    newData.main_image = productData.cloth_color_image[e];
+    setProductData(newData);
+  };
+  useEffect(() => {
+    console.log(productData);
+  });
 
   // Canvas
   let ctx = null; // => 유지되는값 , useRef
@@ -73,9 +82,21 @@ function ProductDetail() {
 
   useEffect(() => {
     axios
-      .get('/data/data.json')
+      .get('/data/ImageSlideData.json')
       .then(res => {
-        setProductData({ ...productData, ...res.data.result });
+        setMainImage({ ...mainImage, ...res.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${API.PRODUCTLIST}/${props.match.params.id}`)
+      .then(res => {
+        setProductData({ ...productData, ...res.data.MESSAGE });
+        console.log(productData);
       })
       .catch(error => {
         console.log(error);
@@ -102,6 +123,7 @@ function ProductDetail() {
             setFontStyle={setFontStyle}
             setFontColor={setFontColor}
             setInventory={setInventory}
+            changeMainImage={changeMainImage}
           />
         </ProductBox>
         <FeatureBox>
@@ -119,7 +141,7 @@ const COORDINATES = {
 };
 
 const Container = styled.div`
-  ${({ theme }) => theme.CenterAlignment};
+  ${({ theme }) => theme.centerAlignment};
   padding: 20px;
   flex-wrap: wrap;
 `;

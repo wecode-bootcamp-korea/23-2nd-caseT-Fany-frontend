@@ -1,6 +1,6 @@
-export const BASE_URL = 'http://10.58.0.197:8000';
+export const BASE_URL = 'http://10.58.3.187:8000';
 export const API = {
-  PRODUCTLIST: `${BASE_URL}/products`,
+  PRODUCTLIST: `${BASE_URL}/product`,
   CATEGORY: `${BASE_URL}/category`,
   SUBCATEGORY: `${BASE_URL}/subcategory`,
   NAVIGATOR: `${BASE_URL}/navigator`,
