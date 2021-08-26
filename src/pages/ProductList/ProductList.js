@@ -46,42 +46,54 @@ function ProductList() {
       <Section>
         <SectionAside>
           <SectionTitleWraper>
-            {Object.entries(productList).map(([title, titleId]) => {
-              return (
-                <SectionTitleList onClick={() => changeSubCategory(titleId.id)}>
-                  {title}
-                </SectionTitleList>
-              );
+            {Object.keys(productList).map(title => {
+              return <SectionTitleList>{title}</SectionTitleList>;
             })}
           </SectionTitleWraper>
           {Object.entries(productList).map(([title, subtitle]) => {
             return (
-              <ProductCategory titleProp={title} subtitleProp={subtitle} />
+              <SectionListWraper>
+                <SectionFilter>
+                  <FilterCheckbox type="checkbox" checked={check} />
+                  <FilterTitle FilterTitle onClick={() => setCheck(!check)}>
+                    {title}
+                  </FilterTitle>
+                </SectionFilter>
+                <FilterListContainer checked={check}>
+                  {Object.keys(subtitle.list[0]).map(list => {
+                    return (
+                      <FilterListWrap>
+                        <FilterList>
+                          <FilterListCheckbox type="checkbox" />
+                          <FilterListContent>{list}</FilterListContent>
+                        </FilterList>
+                      </FilterListWrap>
+                    );
+                  })}
+                </FilterListContainer>
+              </SectionListWraper>
             );
           })}
           <SectionListWraper>
             <SectionFilter>
               <FilterCheckbox type="checkbox" checked={check} />
-              <FilterTitle onClick={() => setCheck(!check)}>
+              <FilterTitle FilterTitle onClick={() => setCheck(!check)}>
                 컬러 & 패턴
               </FilterTitle>
             </SectionFilter>
-            <FilterListContainer>
+            <FilterListContainer checked={check}>
               <FilterListWrap>
                 <FilterList>
                   <ColorPickerWraper>
                     {Object.entries(COLOR).map(([name, property]) => {
-                      const colorName = property.name;
                       const code = property.code;
                       return (
-                        check && (
-                          <ColorPicker>
-                            <ColorPickerBtn
-                              style={{ backgroundColor: `${code}` }}
-                            />
-                            {colorName}
-                          </ColorPicker>
-                        )
+                        <ColorPicker>
+                          <ColorPickerBtn
+                            style={{ backgroundColor: `${code}` }}
+                          />
+                          {name}
+                        </ColorPicker>
                       );
                     })}
                   </ColorPickerWraper>
@@ -90,26 +102,24 @@ function ProductList() {
             </FilterListContainer>
           </SectionListWraper>
         </SectionAside>
-        <SectionProductWraper>
-          <SectionProduct>
-            {product.map(el => (
-              <ProductWraper>
-                <ProductImgBox>
-                  <ProductImg src={el.main_image} alt="case" />
-                </ProductImgBox>
-                <ProductDescription>
-                  <ProductDescriptionTitle>
-                    <ProductTitle>{el.name}</ProductTitle>
-                  </ProductDescriptionTitle>
-                  <ProductDescriptionDetail>
-                    <ProductSubtitle>부 제목</ProductSubtitle>
-                    <ProductPrice>\{el.price}</ProductPrice>
-                  </ProductDescriptionDetail>
-                </ProductDescription>
-              </ProductWraper>
-            ))}
-          </SectionProduct>
-        </SectionProductWraper>
+        <SectionProduct>
+          {product.map(item => (
+            <ProductWraper>
+              <ProductImgBox>
+                <ProductImg src={item.main_image} alt="case" />
+              </ProductImgBox>
+              <ProductDescription>
+                <ProductDescriptionTitle>
+                  <ProductTitle>{item.name}</ProductTitle>
+                </ProductDescriptionTitle>
+                <ProductDescriptionDetail>
+                  <ProductSubtitle>부 제목</ProductSubtitle>
+                  <ProductPrice>\{item.price}</ProductPrice>
+                </ProductDescriptionDetail>
+              </ProductDescription>
+            </ProductWraper>
+          ))}
+        </SectionProduct>
       </Section>
     </ProductListContainer>
   );
@@ -124,7 +134,7 @@ const ProductListContainer = styled.div`
 const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
-  margin: 30px 15px;git 
+  margin: 30px 15px;
 `;
 
 const HeaderTitle = styled.h1`
@@ -141,7 +151,7 @@ const HeaderUl = styled.ul`
 const HeaderLi = styled.li`
   font-size: 16px;
 `;
-const Section = styled.div`
+const Section = styled.aside`
   display: flex;
 `;
 const SectionAside = styled.aside`
@@ -199,7 +209,7 @@ const FilterTitle = styled.div`
 `;
 
 const FilterListContainer = styled.div`
-  height: 'auto';
+  height: ${props => (props.checked === true ? 'auto' : 0)};
   transition: height 0.15s linear 0s;
   overflow: hidden;
 `;
@@ -239,11 +249,6 @@ const ColorPickerBtn = styled.input`
   margin: 4px;
   border: 0;
   border-radius: 15px;
-`;
-const SectionProductWraper = styled.div`
-  flex: 1 1 0%;
-  flex-wrap: wrap;
-  justify-content: center;
 `;
 
 const SectionProduct = styled.div`

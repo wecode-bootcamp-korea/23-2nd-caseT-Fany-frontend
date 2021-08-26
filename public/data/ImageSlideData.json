@@ -6,23 +6,31 @@
     },
     {
       "name": "@taeHwan_Park ",
-      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom2.png"
+      "cloth_color_image": "/images/slide01.jpeg"
     },
     {
       "name": "@moong.t__k",
-      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom2.png"
+      "cloth_color_image": "/images/slide02.jpeg"
     },
     {
       "name": "@9.9_s_h__",
-      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom3.png"
+      "cloth_color_image": "/images/slide03.jpeg"
     },
     {
       "name": "@201_steve",
-      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom4.png"
+      "cloth_color_image": "/images/slide04.jpeg"
     },
     {
       "name": "@zzang_zung",
-      "cloth_color_image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/custom_image/custom5.png"
+      "cloth_color_image": "/images/slide05.jpeg"
+    },
+    {
+      "name": "@zzang_zung",
+      "cloth_color_image": "/images/slide06.jpeg"
+    },
+    {
+      "name": "@zzang_zung",
+      "cloth_color_image": "/images/slide07.jpeg"
     }
   ]
 }

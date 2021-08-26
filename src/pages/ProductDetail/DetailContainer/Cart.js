@@ -13,7 +13,7 @@ const CartContainer = () => {
 };
 
 const Cart = styled.div`
-  ${({ theme }) => theme.CenterAlignment};
+  ${({ theme }) => theme.centerAlignment};
   flex-wrap: wrap;
   margin-top: 15px;
   p {
