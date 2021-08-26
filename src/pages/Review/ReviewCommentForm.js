@@ -1,34 +1,41 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import ReviewStars from './ReviewStars';
 
-export default function ReviewCommentForm() {
+export default function ReviewCommentForm(props) {
   const classes = useStyles();
 
   return (
-    <section className={classes.root}>
-      <textarea placeholder="리뷰 남기기" className={classes.commentBox} />
+    <form className={classes.root} onSubmit={props.handleSubmit}>
+      <ReviewStars
+        name="score"
+        encType="multipart/form-data"
+        currentValue={props.currentValue}
+        hoverValue={props.hoverValue}
+        handleClick={props.handleClick}
+        handleMouseOver={props.handleMouseOver}
+        handleMouseLeave={props.handleMouseLeave}
+      />
+      <input
+        className={classes.input}
+        type="file"
+        onChange={props.handleUpload}
+      />
+      <textarea
+        placeholder="리뷰 남기기"
+        className={classes.commentBox}
+        onChange={props.handleChange}
+        maxLength="200"
+      />
       <Button
-        className={classes.button}
-        onClick={() => {
-          alert('clicked');
-        }}
+        type="button"
+        className={classes.buttonReview}
+        onClick={props.registerReview}
       >
         리뷰 등록
       </Button>
-      <label htmlFor="containedButtonFile">
-        <Button variant="contained" color="primary" component="span">
-          Upload
-        </Button>
-      </label>
-      <input
-        accept="image/*"
-        className={classes.input}
-        id="containedButtonFile"
-        multiple
-        type="file"
-      />
-    </section>
+    </form>
   );
 }
 
@@ -39,16 +46,21 @@ const useStyles = makeStyles(theme => ({
     },
     display: 'flex',
     flexDirection: 'column',
-    width: '500px',
   },
   commentBox: {
     height: '100px',
     padding: '20px',
     border: '1px solid black',
     borderRadius: '5px',
+    overflow: 'scroll',
+    resize: 'none',
+    border: '1px solid #eaeaea',
   },
-  button: {
-    border: '1px solid',
+  buttonReview: {
+    border: '1px solid #2b5dab',
+    width: '750px',
+    backgroundColor: '#2b5dab',
+    color: 'white',
   },
   btnContainer: {
     margin: '10px',
