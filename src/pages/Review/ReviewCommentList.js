@@ -1,69 +1,133 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+import { FaStar } from 'react-icons/fa';
+import { Divider } from '@material-ui/core';
 
-export default function ReviewCommentList() {
-  const classes = useStyles();
-  const [comments, setComments] = useState(['']);
+const stars = Array(5).fill(0);
 
+export default function ReviewCommentList({
+  reviewData,
+  modifyReview,
+  deleteReview,
+  currentValue,
+}) {
   return (
-    <List className={classes.root}>
-      <ListItem className={classes.reviewListContainer}>
-        {comments.map(list => {
-          return (
-            <ListItemText
-              className={classes.text}
-              primary="사용자 ID"
-              secondary={
-                <>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    {'날짜'}
-                  </Typography>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    className={classes.inline}
-                    color="textPrimary"
-                  >
-                    {'구매한 상품'}
-                  </Typography>
-                  <div>{list}</div>
-                </>
-              }
-            />
-          );
-        })}
-      </ListItem>
-    </List>
+    <CommentList>
+      {reviewData.map(comment => {
+        return (
+          <Box key={comment.user}>
+            <ReviewHeader>
+              <span>리뷰어: {comment.user}</span>
+              <span>{comment.create_at}</span>
+
+              <div style={styles.stars}>
+                {stars.map((_, index) => {
+                  return (
+                    <FaStar
+                      key={index}
+                      size={24}
+                      color={
+                        (currentValue || comment.score) > index
+                          ? colors.orange
+                          : colors.grey
+                      }
+                      style={{
+                        marginRight: 10,
+                        cursor: 'pointer',
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </ReviewHeader>
+            <CommentText>{comment.text}</CommentText>
+            <ReviewPhoto src={comment.image} alt="리뷰 이미지" />
+            <Buttons>
+              <button onClick={modifyReview}>리뷰 수정</button>
+              <button onClick={deleteReview}>리뷰 삭제</button>
+            </Buttons>
+            <div classes={styles.divider}>
+              <Divider />
+            </div>
+          </Box>
+        );
+      })}
+    </CommentList>
   );
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    maxWidth: '500px',
-    backgroundColor: theme.palette.background.paper,
-  },
-  reviewListContainer: {
+const styles = {
+  container: {
     display: 'flex',
-    alignContent: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
-  inline: {
-    display: 'inline',
-    paddingRight: '30px',
+  stars: {
+    display: 'flex',
+    flexDirection: 'row',
+    margin: '20px 0px',
   },
-  text: {
-    padding: '20px',
-    borderBottom: '1px solid #f6f6f6',
+  textarea: {
+    border: '1px solid #a9a9a9',
+    borderRadius: 5,
+    padding: 10,
+    margin: '20px 0',
+    minHeight: 100,
+    width: 300,
   },
-}));
+  button: {
+    border: '1px solid #a9a9a9',
+    borderRadius: 5,
+    width: 300,
+    padding: 10,
+  },
+  divider: {
+    marginTop: '10px',
+  },
+};
+
+const colors = {
+  orange: '#FFBA5A',
+  grey: '#a9a9a9',
+};
+
+const CommentList = styled.ul`
+  ${({ theme }) => theme.CenterAlignment};
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  flex-direction: column;
+`;
+
+const Buttons = styled.button`
+  button {
+    margin-top: 20px;
+    margin-right: 10px;
+    border: 1px solid #2b5dab;
+    border-radius: 10px;
+    background-color: #2b5dab;
+    color: white;
+    padding: px;
+  }
+  padding-bottom: 10px;
+`;
+
+const ReviewHeader = styled.div`
+  span {
+    margin: 5px 0px;
+  }
+  display: flex;
+  flex-direction: column;
+`;
+
+const ReviewPhoto = styled.img`
+  width: 200px;
+  height: 200px;
+`;
+
+const CommentText = styled.div`
+  margin: 10px 0px;
+`;
+
+const Box = styled.li`
+  margin: 50px 50px;
+`;

@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "user": 8,
+      "product_id": 2,
+      "product_name": "반팔티",
+      "text": "배송 굿!",
+      "score": 4,
+      "image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-8.jpg",
+      "create_at": "2021-08-24T12:04:33.830"
+    },
+    {
+      "user": 2,
+      "product_id": 3,
+      "product_name": "반팔티",
+      "text": "티셔츠 예뻐요!",
+      "score": 5,
+      "image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-8.jpg",
+      "create_at": "2021-08-24T12:04:33.830"
+    },
+    {
+      "user": 1,
+      "product_id": 6,
+      "product_name": "긴팔",
+      "text": "티셔츠 구려요 우우",
+      "score": 1,
+      "image": "https://wecode-23-casetfany.s3.us-east-2.amazonaws.com/mainimage/1-8.jpg",
+      "create_at": "2021-08-24T12:04:33.830"
+    }
+  ]
+}
