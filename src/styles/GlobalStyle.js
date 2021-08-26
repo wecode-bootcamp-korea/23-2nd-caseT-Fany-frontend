@@ -51,7 +51,6 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Allison&family=Bungee&family=Hammersmith+One&family=Gloria+Hallelujah&family=Hanalei&family=Kaushan+Script&family=Monoton&family=Permanent+Marker&family=Karla:wght@200&family=Rampart+One&family=Rock+Salt&family=Shadows+Into+Light&family=Archivo+Black&Archivo:wght@100&family=Style+Script&family=Tourney:ital,wght@0,100;1,100&display=swap');
 
 
-
 `;
 
 export default GlobalStyle;
