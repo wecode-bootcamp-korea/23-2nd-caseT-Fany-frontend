@@ -8,13 +8,12 @@ import AddProduct from './AddProduct';
 import axios from 'axios';
 import { API, TOKEN_KEY } from '../../config';
 
-const Cart = () => {
+const Cart = cartModalOff => {
   const [cartData, setCartData] = useState([]);
   const [totalPrice, setTotalPrice] = useState('');
 
   const getCart = () =>
     axios
-      // .get('data/CartData.json')
       .get(`${API.CART}`, {
         headers: {
           Authorization: TOKEN_KEY,
@@ -30,6 +29,7 @@ const Cart = () => {
 
   useEffect(() => {
     getCart();
+    // console.log(cartData[0] && cartData[0].main_image);
   }, []);
 
   const deleteItem = e => {
@@ -43,12 +43,12 @@ const Cart = () => {
         getCart();
       });
   };
-
+  console.log(111111, cartModalOff);
   return (
     <CartWrapper>
       <CartContainer>
         <Ad />
-        <CartHeader></CartHeader>
+        <CartHeader />
         <CartItem cartData={cartData} deleteItem={deleteItem} />
         <CartOrder totalPrice={totalPrice} />
         <CartBox />
@@ -61,25 +61,27 @@ const Cart = () => {
 const CartWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 500;
 `;
 
 const CartContainer = styled.div`
   ${({ theme }) => theme.CenterAlignment};
   flex-wrap: wrap;
-  width: 400px;
+  width: 475px;
+  height: 1500px;
   padding: 0 30px 6px 30px;
   background-color: white;
-  border-left: 1px solid white;
+  border-left: 3px solid white;
 `;
 
 const Ad = styled.div`
   postion: absolute;
-  width: 400px;
-  height: 20px;
+  width: 
+  height: 0px;
   padding: 6px 30px;
   margin: 0 -30px;
   background-color: #f15b41;

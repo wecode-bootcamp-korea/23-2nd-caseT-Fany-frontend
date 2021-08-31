@@ -1,18 +1,50 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Cart from '../../pages/Cart/Cart';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { TOKEN_KEY } from '../../config';
 
 function Nav() {
   const list = Object.entries(NAVLIST);
   const [selectedKey, setSelectedKey] = useState();
   const [modal, setModal] = useState(false);
+  const [cartModal, setCartModal] = useState(false);
   const history = useHistory();
   const goToSignUp = () => {
-    history.push('/sign');
+    history.push('/signup');
+  };
+  const goToProducList = () => {
+    history.push('/list?category=1');
+  };
+
+  const cartModalOn = () => {
+    if (localStorage.getItem('token')) {
+      setCartModal(!cartModal);
+      console.log(cartModal);
+    }
+  };
+
+  const cartModalOff = () => {
+    setCartModal(!cartModal);
+    console.log(cartModal);
+  };
+
+  const LoginModal = () => {
+    if (localStorage.getItem('token')) {
+      setModal(!modal);
+    } else {
+      history.push('/signup');
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setModal(!modal);
+    alert('로그아웃 되었습니다.');
   };
 
   return (
@@ -35,18 +67,18 @@ function Nav() {
           <NavIconContent>
             <FontAwesomeIcon icon={faSearch} />
           </NavIconContent>
-          <NavIconContent>
-            <FontAwesomeIcon icon={faShoppingCart} />
-          </NavIconContent>
-          <UserBox>
+          <CartBox>
             <NavIconContent>
               <FontAwesomeIcon
-                icon={faUserAlt}
-                // !token? {goToSignUp}:
-                onClick={() => {
-                  setModal(!modal);
-                }}
+                onClick={() => cartModalOn()}
+                icon={faShoppingCart}
               />
+            </NavIconContent>
+            {cartModal === true ? <Cart /> : null}
+          </CartBox>
+          <UserBox>
+            <NavIconContent>
+              <FontAwesomeIcon icon={faUserAlt} onClick={() => LoginModal()} />
             </NavIconContent>
             {modal === true ? (
               <UserInfo>
@@ -54,7 +86,7 @@ function Nav() {
                 <UserInfoList>설정</UserInfoList>
                 <UserInfoList>주문 현황</UserInfoList>
                 <UserInfoList>지원</UserInfoList>
-                <UserInfoList>로그아웃</UserInfoList>
+                <UserInfoList onClick={() => logout()}>로그아웃</UserInfoList>
               </UserInfo>
             ) : null}
           </UserBox>
@@ -72,7 +104,9 @@ function Nav() {
                         <NavModalListTitle>{el.subTitle}</NavModalListTitle>
                         <NavModalList>
                           {el.list.map(el => (
-                            <NavModalListContent>{el}</NavModalListContent>
+                            <NavModalListContent onClick={goToProducList}>
+                              {el}
+                            </NavModalListContent>
                           ))}
                         </NavModalList>
                       </NavModalListWrap>
@@ -132,6 +166,7 @@ const NavListContent = styled.div`
   font-weight: bold;
   padding: 25px;
   color: #333333;
+  cursor: pointer;
 `;
 
 const NavIcon = styled.div`
@@ -141,12 +176,17 @@ const NavIcon = styled.div`
   font-size: 25px;
   color: #333333;
   right: calc(env(safe-area-inset-left) + 10px);
+  cursor: pointer;
 `;
 const NavIconContent = styled.div`
   padding: 0 8px;
 `;
 
 const UserBox = styled.div`
+  position: relative;
+`;
+
+const CartBox = styled.div`
   position: relative;
 `;
 
@@ -157,11 +197,15 @@ const UserInfo = styled.ul`
   font-size: 15px;
   border: 1px solid gray;
   padding: 9px 0;
+  background-color: white;
+  cursor: pointer;
+  z-index: 300;
 `;
 
 const UserInfoList = styled.li`
   line-height: 2rem;
   padding: 0 20px;
+  cursor: pointer;
 `;
 
 const NavModalContainer = styled.div``;
@@ -169,9 +213,11 @@ const NavModalContainer = styled.div``;
 const NavModal = styled.div`
   display: flex;
   justify-content: center;
-  position: fixed;
+  position: absolute;
   width: 100%;
   padding: 20px 20px;
+  z-index: 100;
+  background-color: white;
 `;
 
 const NavModalContent = styled.div`
@@ -214,6 +260,7 @@ const NavModalListContent = styled.li`
   font-size: 15px;
   margin-bottom: 5px;
   line-height: 2em;
+  cursor: pointer;
 `;
 
 const NAVLIST = {
@@ -248,22 +295,29 @@ const NAVLIST = {
   collection: {
     productList: [
       {
-        subTitle: '상의2',
+        subTitle: '시그니처 프린트',
         list: [
-          '반팔 티셔츠',
-          '긴팔 티셔츠',
-          '후드 티셔츠',
-          '맨투맨/스웨트 셔츠',
-          '셔츠/블라우스',
+          '베스트셀러',
+          '신상품',
+          '인기 인스타그램 디자인',
+          'As Seen On TikTok',
+          '나비프린트',
+          '텍스트 그래픽',
+          '스티커 컬렉션',
         ],
       },
       {
-        subTitle: '하의2',
-        list: ['데님 팬츠', '숏 팬츠', '코튼 팬츠', '기타 바지'],
+        subTitle: '컬렉션',
+        list: [
+          '울트라 에코 티셔츠',
+          '일회용 티셔츠',
+          '맥세이프 호환 티셔츠',
+          '갤럭시 베스트셀러',
+        ],
       },
       {
-        subTitle: '액세서리2',
-        list: ['모자', '가방', '시계', '안경'],
+        subTitle: '아티스트 컬렉션',
+        list: ['팬그램 팬그램', 'Insert Name Here', '컬렉션 모두 보기'],
       },
     ],
     imgdes: [
@@ -276,7 +330,7 @@ const NAVLIST = {
   customProduct: {
     productList: [
       {
-        subTitle: '상의3',
+        subTitle: '커스텀 상의',
         list: [
           '반팔 티셔츠',
           '긴팔 티셔츠',
@@ -286,11 +340,11 @@ const NAVLIST = {
         ],
       },
       {
-        subTitle: '하의3',
+        subTitle: '커스텀 하의',
         list: ['데님 팬츠', '숏 팬츠', '코튼 팬츠', '기타 바지'],
       },
       {
-        subTitle: '액세서리3',
+        subTitle: '커스텀 액세서리',
         list: ['모자', '가방', '시계', '안경'],
       },
     ],
@@ -304,27 +358,17 @@ const NAVLIST = {
   collabo: {
     productList: [
       {
-        subTitle: '상의4',
-        list: [
-          '반팔 티셔츠',
-          '긴팔 티셔츠',
-          '후드 티셔츠',
-          '맨투맨/스웨트 셔츠',
-          '셔츠/블라우스',
-        ],
+        subTitle: '콜라보1',
+        list: ['KFC', 'Coke', 'Space Jam', 'Balansa', 'Saturdays NYC'],
       },
       {
-        subTitle: '하의4',
-        list: ['데님 팬츠', '숏 팬츠', '코튼 팬츠', '기타 바지'],
-      },
-      {
-        subTitle: '액세서리4',
-        list: ['모자', '가방', '시계', '안경'],
+        subTitle: '콜라보2',
+        list: ['Disney Princess', '원피스', 'Basquiat', 'Louvre'],
       },
     ],
     imgdes: [
       {
-        imgSrc: '/images/image4.png',
+        imgSrc: '/images/image5.png',
         des: '아이폰 12 프로 울트라 임팩트 범퍼 케이스',
       },
     ],
@@ -332,27 +376,18 @@ const NAVLIST = {
   AboutUs: {
     productList: [
       {
-        subTitle: '상의5',
+        subTitle: 'About Us',
         list: [
-          '반팔 티셔츠',
-          '긴팔 티셔츠',
-          '후드 티셔츠',
-          '맨투맨/스웨트 셔츠',
-          '셔츠/블라우스',
+          '#CASETiFANYSUSTAINABILTY',
+          '#CASETiFANYprotects',
+          '#CASETiFANYCares',
+          'About Us',
         ],
-      },
-      {
-        subTitle: '하의5',
-        list: ['데님 팬츠', '숏 팬츠', '코튼 팬츠', '기타 바지'],
-      },
-      {
-        subTitle: '액세서리5',
-        list: ['모자', '가방', '시계', '안경'],
       },
     ],
     imgdes: [
       {
-        imgSrc: '/images/image5.png',
+        imgSrc: '/images/image4.png',
         des: '아이폰 12 프로 울트라 임팩트 범퍼 케이스',
       },
     ],

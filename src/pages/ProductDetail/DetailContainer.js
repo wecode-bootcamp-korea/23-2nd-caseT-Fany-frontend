@@ -14,11 +14,15 @@ const DetailContainer = ({
   text,
   setText,
   changeMainImage,
+  submitCart,
+  sizeId,
+  setSizeId,
+  setColorId,
+  colorLeach,
+  setColorLeach,
 }) => {
   const [more, setMore] = useState('hidden');
   const [moreBtn, setMoreBtn] = useState('block');
-
-  console.log(productData);
 
   return (
     <DetailBox>
@@ -34,8 +38,18 @@ const DetailContainer = ({
         </DetailRate>
       </div>
       <OptionChoice>
-        <OptionTilte>사이즈 선택:</OptionTilte>
-        <CustomDropDown productData={productData} setInventory={setInventory} />
+        {true && (
+          <div>
+            <OptionTilte>사이즈 선택:</OptionTilte>
+            <CustomDropDown
+              productData={productData}
+              setInventory={setInventory}
+              setSizeId={setSizeId}
+              colorLeach={colorLeach}
+              setColorLeach={setColorLeach}
+            />
+          </div>
+        )}
       </OptionChoice>
       <OptionChoice>
         <OptionTilte>색상 선택:</OptionTilte>
@@ -45,6 +59,7 @@ const DetailContainer = ({
               productData.cloth_color_image.map((e, i) => {
                 return (
                   <ProductColorBox
+                    key={i}
                     picture={
                       productData.cloth_color_image &&
                       productData.cloth_color_image[i]
@@ -60,6 +75,7 @@ const DetailContainer = ({
               productData.cloth_color_image.map((e, i) => {
                 return (
                   <ProductColorBox
+                    key={i}
                     picture={
                       productData.cloth_color_image &&
                       productData.cloth_color_image[i]
@@ -85,7 +101,7 @@ const DetailContainer = ({
       {productData.cloth_color_image &&
         productData.cloth_color_image.length > 3 &&
         productData.main_image &&
-        productData.main_image.includes('custom0') && (
+        productData.main_image.includes('custom') && (
           <Custom
             setCoordinate={setCoordinate}
             setFontStyle={setFontStyle}
@@ -96,7 +112,7 @@ const DetailContainer = ({
             setText={setText}
           />
         )}
-      <CartContainer />
+      <CartContainer submitCart={submitCart} />
     </DetailBox>
   );
 };

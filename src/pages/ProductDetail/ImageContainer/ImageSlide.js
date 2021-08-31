@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -15,6 +15,7 @@ const ImageSlide = ({ mainImage, changeImage }) => {
   };
 
   return (
+    // 이름이 커스텀 페이지일 때만 보여주기
     <SlideBox>
       <Slider {...settings}>
         {mainImage.slideImage &&
@@ -43,12 +44,14 @@ const SlideBox = styled.div`
 
 const Image = styled.div`
   height: 114px;
-  background: center/100% url(${picture => picture});
+  background: center/100% url(${({ picture }) => picture});
+  border: 3px solid white;
+  border-radius: 5px;
   &: hover {
+    padding-bottom: 31px;
     border-bottom: 3px solid rgba(142, 182, 149, 0.5);
     border-opacity: 0.75;
     opacity: 0.75;
-    border-radius: 1px;
     cursor: pointer;
   }
 `;

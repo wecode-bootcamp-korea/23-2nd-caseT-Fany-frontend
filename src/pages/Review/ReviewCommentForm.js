@@ -5,9 +5,14 @@ import ReviewStars from './ReviewStars';
 
 export default function ReviewCommentForm(props) {
   const classes = useStyles();
+  console.log(props.file);
 
   return (
-    <form className={classes.root} onSubmit={props.handleSubmit}>
+    <form
+      id="reviewForm"
+      className={classes.root}
+      onSubmit={props.handleSubmit}
+    >
       <ReviewStars
         name="score"
         encType="multipart/form-data"
@@ -27,6 +32,7 @@ export default function ReviewCommentForm(props) {
         className={classes.commentBox}
         onChange={props.handleChange}
         maxLength="200"
+        value={props.review}
       />
       <Button
         type="button"

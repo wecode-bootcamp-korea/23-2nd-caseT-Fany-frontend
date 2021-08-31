@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import ReviewCommentList from './ReviewCommentList';
 import ReviewCommentForm from './ReviewCommentForm';
-import { BASE_URL, TOKEN_KEY, API } from '../../config';
+import { BASE_URL, TOKEN_KEY } from '../../config';
 import axios from 'axios';
 
 function Review() {
@@ -43,7 +43,7 @@ function Review() {
 
     axios({
       method: 'post',
-      url: `${BASE_URL}/products/13/review`,
+      url: `${BASE_URL}/products/12/review`,
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -51,18 +51,19 @@ function Review() {
       },
     })
       .then(() => {
-        axios
-          .get(`${BASE_URL}/product/13`)
-          .then(res => {
-            console.log('res', res);
-            setReviewData([...reviewData, ...res.data.MESSAGE.review]);
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        axios.get(`${BASE_URL}/product/12`).then(res => {
+          console.log('res', res);
+          setReviewData([...reviewData, ...res.data.MESSAGE.review]);
+        });
+        setFile('');
+        document.getElementById('reviewForm').reset();
+        setCurrentValue(0);
+        setReview('').catch(err => {
+          console.log(err);
+        });
       })
       .catch(err => {
-        alert('리뷰작성에 실패하셨습니다.');
+        console.log(err, '리뷰작성에 실패하셨습니다.');
       });
   };
 
@@ -129,6 +130,7 @@ function Review() {
         handleMouseLeave={handleMouseLeave}
         handleUpload={handleUpload}
         handleChange={handleChange}
+        review={review}
         registerReview={registerReview}
       />
     </ReviewWrapper>
@@ -138,6 +140,7 @@ function Review() {
 const ReviewWrapper = styled.ul`
   ${({ theme }) => theme.CenterAlignment};
   width: 100%;
+  margin-bottom: 200px;
 `;
 
 const useStyles = makeStyles(theme => ({

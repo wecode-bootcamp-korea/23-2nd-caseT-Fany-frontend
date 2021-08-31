@@ -40,7 +40,9 @@ const VideoSection = styled.div`
 
 const VideoContainer = styled.div`
   position: relative;
-  ${({ theme }) => theme.CenterAlignment};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const VideoWrapper = styled.div`

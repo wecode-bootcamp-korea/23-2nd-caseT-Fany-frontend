@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -37,10 +37,16 @@ const useStyles = makeStyles(theme => ({
 
 const options = ['S', 'M', 'L'];
 
-export default function SimpleListMenu({ productData, setInventory }) {
+export default function SimpleListMenu({
+  setInventory,
+  colorLeach,
+  setColorLeach,
+  setSizeId,
+}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  // const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleClickListItem = event => {
     setAnchorEl(event.currentTarget);
@@ -50,6 +56,7 @@ export default function SimpleListMenu({ productData, setInventory }) {
     setSelectedIndex(index);
     setAnchorEl(null);
     setInventory(options[index]);
+    setSizeId(colorLeach[index].size_id);
   };
 
   const handleClose = () => {
@@ -65,13 +72,9 @@ export default function SimpleListMenu({ productData, setInventory }) {
       >
         <ListItem button onClick={handleClickListItem}>
           <ListItemText
-            primary={
-              productData.product_option &&
-              productData.product_option[selectedIndex].size
-            }
+            primary={colorLeach && colorLeach[selectedIndex].size}
             secondary={`남은 수량: ${
-              productData.product_option &&
-              productData.product_option[selectedIndex].stock
+              colorLeach && colorLeach[selectedIndex].stock
             }개`}
           />
         </ListItem>

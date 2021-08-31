@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import ImageContainer from './ImageContainer';
 import DetailContainer from './DetailContainer';
 import FeatureContainer from './FeatureContainer';
-import { API } from '../../config';
+import Cart from '../Cart/Cart';
+import Review from '../Review/Review';
+import { API, BASE_URL, TOKEN_KEY } from '../../config';
 import axios from 'axios';
 
 function ProductDetail(props) {
@@ -17,6 +19,35 @@ function ProductDetail(props) {
   const [cartState, setCartState] = useState(false);
   const [productData, setProductData] = useState({});
   const [mainImage, setMainImage] = useState({});
+  const [showCart, setShowCart] = useState(false);
+  const [colorId, setColorId] = useState(1);
+  const [sizeId, setSizeId] = useState(0);
+  const [colorLeach, setColorLeach] = useState([
+    {
+      size_id: 1,
+      size: 'S',
+      color_id: 1,
+      color: 'Red ',
+      stock: 6,
+      sales: 10,
+    },
+    {
+      size_id: 1,
+      size: 'S',
+      color_id: 2,
+      color: 'DeepPink',
+      stock: 7,
+      sales: 10,
+    },
+    {
+      size_id: 1,
+      size: 'S',
+      color_id: 3,
+      color: 'Lightpink',
+      stock: 6,
+      sales: 10,
+    },
+  ]);
 
   const changeImage = e => {
     let newData = { ...productData };
@@ -25,14 +56,43 @@ function ProductDetail(props) {
     setText('');
   };
 
-  const changeMainImage = e => {
+  const changeMainImage = i => {
     let newData = { ...productData };
-    newData.main_image = productData.cloth_color_image[e];
+    newData.main_image = productData.cloth_color_image[i];
     setProductData(newData);
+    setColorId(
+      productData.product_option && productData.product_option[i].color_id
+    );
   };
+
   useEffect(() => {
-    console.log(productData);
-  });
+    console.log(colorId);
+    console.log(sizeId);
+  }, [colorId, sizeId]);
+
+  const submitCart = () => {
+    // let productList = [];
+    // productList.push({ });
+    axios
+      .post(
+        `${BASE_URL}/product_id/${props.match.params.id}/custom`,
+        {
+          size_id: sizeId,
+          color_id: colorId,
+        },
+        {
+          headers: {
+            Authorization: TOKEN_KEY,
+          },
+        }
+      )
+      .then(res => {
+        setShowCart(!showCart);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   // Canvas
   let ctx = null; // => 유지되는값 , useRef
@@ -77,8 +137,20 @@ function ProductDetail(props) {
         fontWeight: 700,
       }
     );
-    console.log(coordinate);
   }, [text, coordinate, fontStyle, fontColor]);
+
+  const colorFilter = () => {
+    const filterList =
+      productData.product_option &&
+      productData.product_option.filter(
+        product => product.color_id === colorId
+      );
+    setColorLeach(filterList);
+  };
+
+  useEffect(() => {
+    colorFilter();
+  }, [colorId]);
 
   useEffect(() => {
     axios
@@ -93,10 +165,11 @@ function ProductDetail(props) {
 
   useEffect(() => {
     axios
+      // .get('/data/data.json')
       .get(`${API.PRODUCTLIST}/${props.match.params.id}`)
+
       .then(res => {
         setProductData({ ...productData, ...res.data.MESSAGE });
-        console.log(productData);
       })
       .catch(error => {
         console.log(error);
@@ -113,6 +186,7 @@ function ProductDetail(props) {
             changeImage={changeImage}
             cartState={cartState}
             setCartState={setCartState}
+            mainImage={mainImage}
           />
           <DetailContainer
             productData={productData}
@@ -124,11 +198,19 @@ function ProductDetail(props) {
             setFontColor={setFontColor}
             setInventory={setInventory}
             changeMainImage={changeMainImage}
+            submitCart={submitCart}
+            sizeId={sizeId}
+            setSizeId={setSizeId}
+            setColorId={setColorId}
+            colorLeach={colorLeach}
+            setColorLeach={setColorLeach}
           />
         </ProductBox>
         <FeatureBox>
           <FeatureContainer />
         </FeatureBox>
+        <Review />
+        {showCart && <Cart />}
       </Container>
     </>
   );
@@ -144,6 +226,8 @@ const Container = styled.div`
   ${({ theme }) => theme.centerAlignment};
   padding: 20px;
   flex-wrap: wrap;
+  position: relative;
+  top: 10px;
 `;
 
 const ProductBox = styled.div`
@@ -153,7 +237,6 @@ const ProductBox = styled.div`
 
 const FeatureBox = styled.div`
   width: 1200px;
-  height: 1000px;
 `;
 
 export default ProductDetail;

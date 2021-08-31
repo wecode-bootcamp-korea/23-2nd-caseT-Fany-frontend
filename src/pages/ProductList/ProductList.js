@@ -11,7 +11,7 @@ function ProductList() {
   const history = useHistory();
 
   const getProduct = () => {
-    fetch(`http://10.58.3.187:8000/product${location.search}`)
+    fetch(`http://18.224.57.246:8000/product${location.search}`)
       .then(res => res.json())
       .then(res => setproduct(res.results));
   };
@@ -31,47 +31,39 @@ function ProductList() {
     history.push(`/list?category=1&sub_category=${id}`);
   };
 
-  console.log(`http://10.58.3.187:8000/products${location.search}`);
+  const changeCategory = function () {
+    history.push(`/list?category=1`);
+  };
+
+  const goToDetail = id => {
+    history.push(`/productdetail/${id}`);
+  };
+
+  console.log(`http://18.224.57.246:8000/products${location.search}`);
   return (
     <ProductListContainer>
       <HeaderContainer>
-        <HeaderTitle>반팔</HeaderTitle>
+        <HeaderTitle onClick={changeCategory}>반팔</HeaderTitle>
         <HeaderUl>
           <HeaderLi>전 상품</HeaderLi>
           <HeaderLiSector>/</HeaderLiSector>
           <HeaderLi>반팔</HeaderLi>
-          <HeaderLiSector>/</HeaderLiSector>
         </HeaderUl>
       </HeaderContainer>
       <Section>
         <SectionAside>
           <SectionTitleWraper>
-            {Object.keys(productList).map(title => {
-              return <SectionTitleList>{title}</SectionTitleList>;
+            {Object.entries(productList).map(([title, titleId]) => {
+              return (
+                <SectionTitleList onClick={() => changeSubCategory(titleId.id)}>
+                  {title}
+                </SectionTitleList>
+              );
             })}
           </SectionTitleWraper>
           {Object.entries(productList).map(([title, subtitle]) => {
             return (
-              <SectionListWraper>
-                <SectionFilter>
-                  <FilterCheckbox type="checkbox" checked={check} />
-                  <FilterTitle FilterTitle onClick={() => setCheck(!check)}>
-                    {title}
-                  </FilterTitle>
-                </SectionFilter>
-                <FilterListContainer checked={check}>
-                  {Object.keys(subtitle.list[0]).map(list => {
-                    return (
-                      <FilterListWrap>
-                        <FilterList>
-                          <FilterListCheckbox type="checkbox" />
-                          <FilterListContent>{list}</FilterListContent>
-                        </FilterList>
-                      </FilterListWrap>
-                    );
-                  })}
-                </FilterListContainer>
-              </SectionListWraper>
+              <ProductCategory titleProp={title} subtitleProp={subtitle} />
             );
           })}
           <SectionListWraper>
@@ -102,24 +94,26 @@ function ProductList() {
             </FilterListContainer>
           </SectionListWraper>
         </SectionAside>
-        <SectionProduct>
-          {product.map(item => (
-            <ProductWraper>
-              <ProductImgBox>
-                <ProductImg src={item.main_image} alt="case" />
-              </ProductImgBox>
-              <ProductDescription>
-                <ProductDescriptionTitle>
-                  <ProductTitle>{item.name}</ProductTitle>
-                </ProductDescriptionTitle>
-                <ProductDescriptionDetail>
-                  <ProductSubtitle>부 제목</ProductSubtitle>
-                  <ProductPrice>\{item.price}</ProductPrice>
-                </ProductDescriptionDetail>
-              </ProductDescription>
-            </ProductWraper>
-          ))}
-        </SectionProduct>
+        <SectionProductContainer>
+          <SectionProduct>
+            {product.map(item => (
+              <ProductWraper onClick={() => goToDetail(item.id)}>
+                <ProductImgBox>
+                  <ProductImg src={item.main_image} alt="case" />
+                </ProductImgBox>
+                <ProductDescription>
+                  <ProductDescriptionTitle>
+                    <ProductTitle>{item.name}</ProductTitle>
+                  </ProductDescriptionTitle>
+                  <ProductDescriptionDetail>
+                    <ProductSubtitle>{item.detail}</ProductSubtitle>
+                    <ProductPrice>\{item.price}</ProductPrice>
+                  </ProductDescriptionDetail>
+                </ProductDescription>
+              </ProductWraper>
+            ))}
+          </SectionProduct>
+        </SectionProductContainer>
       </Section>
     </ProductListContainer>
   );
@@ -128,7 +122,10 @@ function ProductList() {
 export default ProductList;
 
 const ProductListContainer = styled.div`
+  position: relative;
+  top: 10px;
   padding: 0 8vw;
+  margin-bottom: 50px;
 `;
 
 const HeaderContainer = styled.header`
@@ -141,6 +138,7 @@ const HeaderTitle = styled.h1`
   font-size: 36px;
   font-weight: bold;
   padding-bottom: 64px;
+  cursor: pointer;
 `;
 
 const HeaderUl = styled.ul`
@@ -150,8 +148,9 @@ const HeaderUl = styled.ul`
 
 const HeaderLi = styled.li`
   font-size: 16px;
+  font-weight: bold;
 `;
-const Section = styled.aside`
+const Section = styled.div`
   display: flex;
 `;
 const SectionAside = styled.aside`
@@ -160,6 +159,7 @@ const SectionAside = styled.aside`
 
 const HeaderLiSector = styled.span`
   margin: 0 5px;
+  font-weight: bold;
 `;
 
 const SectionTitleWraper = styled.div`
@@ -173,6 +173,7 @@ const SectionTitleList = styled.div`
   padding-bottom: 16px;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 `;
 const SectionListWraper = styled.div`
   display: flex;
@@ -250,9 +251,14 @@ const ColorPickerBtn = styled.input`
   border: 0;
   border-radius: 15px;
 `;
-
+const SectionProductContainer = styled.div`
+  flex: 1 1 0%;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 const SectionProduct = styled.div`
   flex: 1 1 0%;
+
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: 30px;
@@ -261,7 +267,9 @@ const SectionProduct = styled.div`
   padding: 0 0 0 4vw;
 `;
 
-const ProductWraper = styled.div``;
+const ProductWraper = styled.div`
+  cursor: pointer;
+`;
 
 const ProductImgBox = styled.div``;
 const ProductImg = styled.img``;
