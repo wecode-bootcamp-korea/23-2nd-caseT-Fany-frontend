@@ -8,6 +8,7 @@ const CartItem = ({ cartData, deleteItem, minusBtn, plusBtn, id }) => {
         cartData.map((e, i) => {
           return (
             <CartItemContainer>
+              {console.log(cartData[0] && cartData[0].main_image)}
               <ItemImage picture={cartData[i] && cartData[i].main_image} />
               <ItemDescription>
                 <h6>{cartData[i] && cartData[i].name}</h6>
@@ -57,6 +58,7 @@ const ItemDescription = styled.div`
   height: 84px;
 
   h6 {
+    padding-bottom: 5px;
     font-size: 15px;
   }
 

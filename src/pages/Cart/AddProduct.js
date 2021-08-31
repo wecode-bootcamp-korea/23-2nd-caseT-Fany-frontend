@@ -5,9 +5,25 @@ const AddProduct = () => {
   return (
     <AddProductContainer>
       <BundleItem>
-        <BundleItemImage />
+        <BundleItemImage picture={'/images/shirt10.png'} />
         <BundleItemDescription>
-          <BundleItemName>iPhone 12 Pro Max Screen Protector</BundleItemName>
+          <BundleItemName>
+            <h6>김훈태 스페셜 티셔츠</h6> <p>색상: Lime</p>
+          </BundleItemName>
+
+          <BundleIteamAdd>
+            <p>ADD+</p>
+            <BundleIteamCost>₩25000</BundleIteamCost>
+          </BundleIteamAdd>
+        </BundleItemDescription>
+      </BundleItem>
+      <BundleItem>
+        <BundleItemImage picture={'/images/shirt3.png'} />
+        <BundleItemDescription>
+          <BundleItemName>
+            <h6>한승휸 스페셜 티셔츠</h6> <p>색상: Palegreen</p>
+          </BundleItemName>
+
           <BundleIteamAdd>
             <p>ADD+</p>
             <BundleIteamCost>₩25000</BundleIteamCost>
@@ -27,30 +43,44 @@ const BundleItem = styled.div`
   padding: 15px;
   margin-bottom: 10px;
   width: 100%;
-  height: 87px;
+  height: 95px;
   background-color: rgba(0, 0, 0, 0.03);
 `;
 
 const BundleItemImage = styled.div`
   margin-right: 15px;
-  width: 72px;
+  width: 20%;
   height: 72px;
-  background: center/120% url('/images/shirt10.png');
+  background: center/120% url(${({ picture }) => picture});
 `;
 
 const BundleItemDescription = styled.div`
   margin-top: -30px;
+  width: 70%;
   display: flex;
   font-size: 12px;
 `;
 
 const BundleItemName = styled.p`
+  margin-top: 10px;
   font-weight: 500;
+
+  h6 {
+    font-size: 15px;
+  }
+
+  p {
+    padding-top: 5px;
+    color: rgba(0, 0, 0, 0.45);
+  }
 `;
 
 const BundleIteamAdd = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-top: 8px;
+  margin-left: 110px;
+  width: 10%;
 
   p {
     font-size: 14px;

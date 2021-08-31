@@ -72,7 +72,7 @@ const Image = styled.div`
   margin-left: 10px;
   height: 285px;
   width: 285px;
-  background: center/100% url(${picture => picture});
+  background: center/100% url(${({ picture }) => picture});
 `;
 
 export default CommunitySlide;

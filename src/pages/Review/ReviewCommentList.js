@@ -27,9 +27,7 @@ export default function ReviewCommentList({
                       key={index}
                       size={24}
                       color={
-                        (currentValue || comment.score) > index
-                          ? colors.orange
-                          : colors.grey
+                        comment.score > index ? colors.orange : colors.grey
                       }
                       style={{
                         marginRight: 10,

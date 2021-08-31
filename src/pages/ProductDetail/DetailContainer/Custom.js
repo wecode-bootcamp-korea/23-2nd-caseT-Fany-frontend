@@ -127,7 +127,7 @@ const OptionTilte = styled.div`
 `;
 
 const CustomContainer = styled.div`
-  ${({ theme }) => theme.CenterAlignment};
+  ${({ theme }) => theme.centerAlignment};
   flex-wrap: wrap;
   padding: 10px;
   margin: 6px;
@@ -143,9 +143,9 @@ const CustomChoice = styled.div`
 `;
 
 const CustomStyle = styled.div`
-  padding: 0 25px;
+  padding: 0 25px 0 30px;
   p {
-    padding-bottom: 2px;
+    padding-bottom: 5px;
   }
   ul {
     display: flex;
@@ -182,6 +182,10 @@ const CustomText = styled.div`
   padding-top: 20px;
   width: 325px;
   border-top: 1px solid #dee2e6;
+
+  h6 {
+    padding-bottom: 3px;
+  }
 
   p {
     position: absolute;

@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CartContainer = () => {
-  const submitCart = () => {};
-
+const CartContainer = ({ submitCart }) => {
   return (
     <Cart>
       <CartBtn onClick={submitCart}>카트에 담기</CartBtn>

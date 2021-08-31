@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CartOrder = () => {
+const CartHeader = cartModalOff => {
   return (
     <CartHeaderContainer>
       <HeaderIcon>
-        <RightArrow />
+        <RightArrow onClick={() => console.log()} />
         <ShoppingCart />
       </HeaderIcon>
       <p>Congrats! You get free standard shipping!</p>
@@ -18,7 +18,7 @@ const CartHeaderContainer = styled.div`
   ${({ theme }) => theme.centerAlignment};
   flex-wrap: wrap;
   padding-top: 30px;
-  width: 400px;
+  width: 100%;
 
   p {
     margin: 15px 0 9px 0;
@@ -26,8 +26,6 @@ const CartHeaderContainer = styled.div`
   }
 
   span {
-    display: block;
-    margin: 0 auto;
     width: 100%;
     height: 6px;
     background-color: #ea594e;
@@ -54,4 +52,4 @@ const ShoppingCart = styled.div`
   background: center/100% url('/images/shopping-cart.png');
 `;
 
-export default CartOrder;
+export default CartHeader;

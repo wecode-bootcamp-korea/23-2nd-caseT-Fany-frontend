@@ -91,6 +91,8 @@ const FooterContainer = styled.div`
   background-color: #333333;
   z-index: 5000;
   ${FlexColumn};
+  position: ralative;
+  bottom: 0;
 `;
 
 const FooterTop = styled.div`

@@ -25,6 +25,7 @@ const FeatureTitle = styled.h1`
 const FeatureImage = styled.img`
   width: 100%;
   height: auto;
+  z-index: -1;
 `;
 
 export default ProductFeatures;

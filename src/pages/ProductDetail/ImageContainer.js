@@ -6,14 +6,11 @@ const ImageContainer = ({ canvas, productData, changeImage, mainImage }) => {
   return (
     <ImageBox>
       <Image picture={productData.main_image} ref={canvas}></Image>
-      {console.log(productData.name)}
-      {productData.name === '커스텀 티셔츠' && (
-        <ImageSlide
-          changeImage={changeImage}
-          productData={productData}
-          mainImage={mainImage}
-        />
-      )}
+      <ImageSlide
+        changeImage={changeImage}
+        productData={productData}
+        mainImage={mainImage}
+      />
     </ImageBox>
   );
 };
